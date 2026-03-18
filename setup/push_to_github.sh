@@ -9,10 +9,14 @@ echo "=============================================="
 echo ""
 
 # 检查是否在正确的目录
-if [ ! -f "README.md" ]; then
-    echo "❌ 错误：请在 agent-skills-learning 目录下运行此脚本"
+PROJECT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+if [ ! -f "${PROJECT_DIR}/README.md" ]; then
+    echo "❌ 错误：无法找到项目目录"
     exit 1
 fi
+
+# 切换到项目目录
+cd "${PROJECT_DIR}"
 
 # 询问GitHub用户名
 read -p "👤 请输入你的GitHub用户名: " github_username
